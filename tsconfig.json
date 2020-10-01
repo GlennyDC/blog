@@ -16,7 +16,8 @@
     "jsx": "preserve",
     "allowJs": false,
     "skipLibCheck": false,
-    "strict": true
+    "strict": true,
+    "removeComments": true,
   },
   "include": [
     "next-env.d.ts",
