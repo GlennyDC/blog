@@ -2,8 +2,7 @@ import * as React from 'react';
 import { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 
-import { theme } from '../theme';
-import { GlobalStyle } from '../globalStyle';
+import { theme , GlobalStyle } from '../style';
 
 const CustomApp = ({ Component, pageProps }: AppProps) => {
   return (
