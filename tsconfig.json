@@ -9,7 +9,8 @@
     "baseUrl": "./src",
     "paths": {
       "@/components": ["components/index.ts"],
-      "@/lib": ["lib/index.ts"]
+      "@/lib": ["lib/index.ts"],
+      "@/assets": ["assets/index.ts"]
     },
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,

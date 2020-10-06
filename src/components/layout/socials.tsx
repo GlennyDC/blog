@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import * as React from 'react';
 
-import GithubIcon from '../../assets/icons/gitHub.svg';
-import LinkedInIcon from '../../assets/icons/linkedIn.svg';
+import { GitHubIcon, LinkedInIcon } from '@/assets';
 
 const Container = styled.div`
   display: grid;
@@ -31,7 +30,7 @@ export const Socials: React.FC = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <GithubIcon />
+        <GitHubIcon />
       </AnchorEl>
       <AnchorEl
         href="https://www.linkedin.com/in/glenny-de-cock/"
