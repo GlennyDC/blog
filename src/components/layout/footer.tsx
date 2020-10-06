@@ -14,7 +14,7 @@ const FooterEl = styled.footer`
 
 const StyledContainer = styled(Container)`
   display: grid;
-  grid-template-columns: 1fr 2rem;
+  grid-template-columns: 1fr max-content;
   grid-column-gap: 1rem;
   align-items: center;
 `;
