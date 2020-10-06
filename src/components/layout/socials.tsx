@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as React from 'react';
 
-import GithubIcon from '../../assets/icons/github.svg';
+import GithubIcon from '../../assets/icons/gitHub.svg';
 import LinkedInIcon from '../../assets/icons/linkedIn.svg';
 
 const Container = styled.div`
