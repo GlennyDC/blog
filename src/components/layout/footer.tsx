@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import * as React from 'react';
 
+import { Socials } from './socials';
 import { Container } from '../container';
 
 const FooterEl = styled.footer`
@@ -23,7 +24,7 @@ export const Footer: React.FC = () => {
     <FooterEl>
       <StyledContainer>
         <div>Glenny De Cock &copy; {new Date().getFullYear()}</div>
-        <img src="/icons/github.svg" alt="Github logo" />
+        <Socials />
       </StyledContainer>
     </FooterEl>
   );
