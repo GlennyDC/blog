@@ -5,10 +5,10 @@ import { Socials } from './socials';
 import { Container } from '../container';
 
 const FooterEl = styled.footer`
-  ${({ theme }) => css`
-    color: ${theme.colors.shade.contrastText};
-    background-color: ${theme.colors.shade.main};
-    padding: ${theme.spacing.smaller} 0;
+  ${({ theme: { colors, spacing } }) => css`
+    color: ${colors.primary.text};
+    background-color: ${colors.primary[500]};
+    padding: ${spacing.smaller} 0;
   `};
 `;
 

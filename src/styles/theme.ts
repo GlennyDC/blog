@@ -1,7 +1,13 @@
+import { DefaultTheme } from 'styled-components';
+
 const black = '#000000';
 const white = '#FFFFFF';
 
-const breakpoints: { [key: string]: number } = {
+type Breakpoints = {
+  [key: string]: number;
+};
+
+export const breakpoints: Breakpoints = {
   xxxs: 0,
   xxs: 360,
   xs: 480,
@@ -13,34 +19,38 @@ const breakpoints: { [key: string]: number } = {
   xxxl: 1920,
 };
 
-const up = (breakpoint: string) => {
+export const spacing = {
+  smaller: '1rem',
+  small: '2rem',
+  medium: '3rem',
+  large: '4rem',
+  larger: '5rem',
+};
+
+export const up = (breakpoint: string) => {
   return `@media (min-width:${breakpoints[breakpoint]}px)`;
 };
 
-export const theme = {
-  spacing: {
-    smaller: '1rem',
-    small: '2rem',
-    medium: '3rem',
-    large: '4rem',
-    larger: '5rem',
+export const colors = {
+  black,
+  white,
+  primary: {
+    300: '#64B5F6',
+    500: '#2196F3',
+    700: '#1976D2',
+    text: black,
   },
+  secondary: {
+    300: '#4DD0E1',
+    500: '#00BCD4',
+    700: '#0097A7',
+    text: black,
+  },
+};
+
+export const theme: DefaultTheme = {
   breakpoints,
-  colors: {
-    black,
-    white,
-    primary: {
-      light: '#2196F3',
-      main: '#1E88E5',
-      dark: '#1976D2',
-      contrastText: white,
-    },
-    shade: {
-      light: '#FAFAFA',
-      main: '#F5F5F5',
-      dark: '#EEEEEE',
-      contrastText: black,
-    },
-  },
+  spacing,
+  colors,
   up,
 };

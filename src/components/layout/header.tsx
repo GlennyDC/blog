@@ -1,30 +1,46 @@
 import styled, { css } from 'styled-components';
 import * as React from 'react';
-
-import { Container } from '../container';
+import { Avatar } from '../avatar';
 
 const HeaderEl = styled.header`
-  ${({ theme }) => css`
-    color: ${theme.colors.shade.contrastText};
-    background-color: ${theme.colors.shade.main};
+  height: 8rem;
+  ${({ theme: { colors, up } }) => css`
+    background-color: ${colors.primary[500]};
+
+    ${up('sm')} {
+      height: 10rem;
+    }
+    ${up('md')} {
+      height: 12rem;
+    }
   `};
 `;
 
-const StyledContainer = styled(Container)`
-  display: flex;
-  flex-direction: row-reverse;
-  img {
-    width:30rem;
-    display: block;
-  }
+const StyledAvatar = styled(Avatar)`
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 4rem;
+  margin: auto;
+  width: 6rem;
+
+  ${({ theme: { up, colors } }) => css`
+    border: 0.5rem solid ${colors.secondary[300]};
+    ${up('sm')} {
+      top: 5rem;
+      width: 8rem;
+    }
+    ${up('md')} {
+      top: 6rem;
+      width: 10rem;
+    }
+  `};
 `;
 
 export const Header: React.FC = () => {
   return (
     <HeaderEl>
-      <StyledContainer>
-        <img src="me.png" alt="Glenny De Cock" />
-      </StyledContainer>
+      <StyledAvatar src="/img/me.jpg" alt="Glenny De Cock" />
     </HeaderEl>
   );
 };

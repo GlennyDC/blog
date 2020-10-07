@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import * as React from 'react';
 
 import { GitHubIcon, LinkedInIcon } from '@/assets';
@@ -10,16 +10,21 @@ const Container = styled.div`
 `;
 
 const AnchorEl = styled.a`
-  &:hover,
-  &:focus {
+  ${({ theme: { colors } }) => css`
     svg {
-      fill: red;
+      fill: ${colors.primary[300]};
     }
-  }
-  svg {
-    transition: fill 300ms ease;
-    display: block;
-  }
+    &:hover,
+    &:focus {
+      svg {
+        fill: ${colors.primary[700]};
+      }
+    }
+    svg {
+      transition: fill 300ms ease;
+      display: block;
+    }
+  `};
 `;
 
 export const Socials: React.FC = () => {
@@ -29,6 +34,7 @@ export const Socials: React.FC = () => {
         href="https://github.com/GlennyDC"
         target="_blank"
         rel="noopener noreferrer"
+        title="Go to my GitHub"
       >
         <GitHubIcon />
       </AnchorEl>
@@ -36,6 +42,7 @@ export const Socials: React.FC = () => {
         href="https://www.linkedin.com/in/glenny-de-cock/"
         target="_blank"
         rel="noopener noreferrer"
+        title="Go to my LinkedIn"
       >
         <LinkedInIcon />
       </AnchorEl>

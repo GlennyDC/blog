@@ -14,17 +14,19 @@ export const getStaticProps = () => {
 const Home = ({ allPostsData }: any) => {
   return (
     <Layout>
-      {allPostsData.map(({ id, date, title }: any) => (
-        <li key={id}>
-          <Link href={`/posts/${id}`}>
-            <a>{title}</a>
-          </Link>
-          <br />
-          {id}
-          <br />
-          <Date dateString={date} />
-        </li>
-      ))}
+      <div style={{ height: '100vh', padding: '5rem 0' }}>
+        {allPostsData.map(({ id, date, title }: any) => (
+          <li key={id}>
+            <Link href={`/posts/${id}`}>
+              <a>{title}</a>
+            </Link>
+            <br />
+            {id}
+            <br />
+            <Date dateString={date} />
+          </li>
+        ))}
+      </div>
     </Layout>
   );
 };

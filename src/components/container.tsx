@@ -7,7 +7,6 @@ const DivEl = styled.div`
   ${({ theme: { up, breakpoints, spacing } }) => css`
     padding: 0 ${spacing.smaller};
     ${up('xs')} {
-      padding: 0;
       max-width: 80%;
     }
     ${up('lg')} {
