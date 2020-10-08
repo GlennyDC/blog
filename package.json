@@ -11,6 +11,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@mdx-js/loader": "^1.6.18",
+    "@next/mdx": "^9.5.4",
     "date-fns": "^2.16.1",
     "gray-matter": "^4.0.2",
     "next": "9.5.3",

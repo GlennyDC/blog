@@ -1,8 +1,11 @@
 const bundleAnalyzer = require('@next/bundle-analyzer');
+const nextMDX = require('@next/mdx');
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
+
+const withMDX = nextMDX();
 
 const nextConfig = {
   // Next highly recommends to change the default target from server
@@ -11,6 +14,7 @@ const nextConfig = {
   target: 'serverless',
   poweredByHeader: false,
   reactStrictMode: true,
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -33,4 +37,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = withMDX(withBundleAnalyzer(nextConfig));
