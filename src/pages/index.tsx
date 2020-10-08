@@ -14,7 +14,7 @@ export const getStaticProps = () => {
 const Home = ({ allPostsData }: any) => {
   return (
     <Layout>
-      <div style={{ height: '100vh', padding: '5rem 0' }}>
+      <div style={{ height: '100vh' }}>
         {allPostsData.map(({ id, date, title }: any) => (
           <li key={id}>
             <Link href={`/posts/${id}`}>

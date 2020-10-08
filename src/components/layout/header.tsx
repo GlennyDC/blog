@@ -6,12 +6,15 @@ const HeaderEl = styled.header`
   height: 8rem;
   ${({ theme: { colors, up } }) => css`
     background-color: ${colors.primary[500]};
+    margin-bottom: 6rem;
 
     ${up('sm')} {
       height: 10rem;
+      margin-bottom: 8rem;
     }
     ${up('md')} {
       height: 12rem;
+      margin-bottom: 10rem;
     }
   `};
 `;

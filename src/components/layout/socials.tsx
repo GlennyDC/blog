@@ -13,16 +13,14 @@ const AnchorEl = styled.a`
   ${({ theme: { colors } }) => css`
     svg {
       fill: ${colors.primary[300]};
+      transition: fill 300ms ease;
+      display: block;
     }
     &:hover,
     &:focus {
       svg {
         fill: ${colors.primary[700]};
       }
-    }
-    svg {
-      transition: fill 300ms ease;
-      display: block;
     }
   `};
 `;
