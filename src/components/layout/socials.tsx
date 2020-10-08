@@ -12,7 +12,6 @@ const Container = styled.div`
 const AnchorEl = styled.a`
   ${({ theme: { colors } }) => css`
     svg {
-      fill: ${colors.primary[300]};
       transition: fill 300ms ease;
       display: block;
     }

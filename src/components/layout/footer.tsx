@@ -5,9 +5,7 @@ import { Socials } from './socials';
 import { Container } from '../container';
 
 const FooterEl = styled.footer`
-  ${({ theme: { colors, spacing } }) => css`
-    color: ${colors.primary.text};
-    background-color: ${colors.primary[500]};
+  ${({ theme: { spacing } }) => css`
     padding: ${spacing.smaller} 0;
   `};
 `;
