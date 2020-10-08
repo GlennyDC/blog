@@ -1,4 +1,10 @@
-module.exports = {
+const bundleAnalyzer = require('@next/bundle-analyzer');
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   webpack(config) {
@@ -22,3 +28,5 @@ module.exports = {
     return config;
   },
 };
+
+module.exports = withBundleAnalyzer(nextConfig);
