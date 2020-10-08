@@ -7,7 +7,16 @@ module.exports = {
       issuer: {
         test: /\.(js|ts)x?$/,
       },
-      use: ['@svgr/webpack'],
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            // Make SVGR pass the title prop to SVGs
+            // https://react-svgr.com/docs/options/#title
+            titleProp: true,
+          },
+        },
+      ],
     });
 
     return config;
