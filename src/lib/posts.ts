@@ -1,4 +1,3 @@
-import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import remark from 'remark';
@@ -69,6 +68,7 @@ export const getPostData = async (slug: string) => {
     }),
   );
 
+  // @ts-ignore
   const { postFilePath } = postsFileSlugMapping.find(
     (postFileSlugMapping) => postFileSlugMapping.slug === slug,
   );
