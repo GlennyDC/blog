@@ -5,6 +5,10 @@ const withBundleAnalyzer = bundleAnalyzer({
 });
 
 const nextConfig = {
+  // Next highly recommends to change the default target from server
+  // to serverless
+  // https://nextjs.org/docs/api-reference/next.config.js/build-target
+  target: 'serverless',
   poweredByHeader: false,
   reactStrictMode: true,
   webpack(config) {
