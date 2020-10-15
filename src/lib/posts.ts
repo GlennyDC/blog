@@ -1,28 +1,52 @@
 import path from 'path';
 import matter from 'gray-matter';
 import remark from 'remark';
-import html from 'remark-html';
+import remarkHtml from 'remark-html';
+
 import { readdir, readFile } from './utils';
 
 const postsDirectory = path.join(process.cwd(), './src/content/posts');
 
-export const getSortedPostsData = async () => {
-  const postFileNames = await readdir(postsDirectory);
+const readAndParseFile = async (filePath: string) => {
+  const fileContent = await readFile(filePath, 'utf8');
+  const parsedFile = matter(fileContent);
+  return parsedFile;
+};
 
-  const allPostsData = await Promise.all(
-    postFileNames.map(async (postFileName) => {
+export const getAllPostPaths = async () => {
+  const allPostFileNames = await readdir(postsDirectory);
+
+  const allPostPaths = await Promise.all(
+    allPostFileNames.map(async (postFileName) => {
       const postFilePath = path.join(postsDirectory, postFileName);
-      const postFileContent = await readFile(postFilePath, 'utf8');
-
-      const matterResult = matter(postFileContent);
+      const postFileContents = await readAndParseFile(postFilePath);
 
       return {
-        ...matterResult.data,
+        params: {
+          slug: postFileContents.data.slug,
+        },
       };
     }),
   );
 
-  return allPostsData.sort((a, b) => {
+  return allPostPaths;
+};
+
+export const getAllPostData = async () => {
+  const allPostFileNames = await readdir(postsDirectory);
+
+  const allPostData = await Promise.all(
+    allPostFileNames.map(async (postFileName) => {
+      const postFilePath = path.join(postsDirectory, postFileName);
+      const postFileContents = await readAndParseFile(postFilePath);
+
+      return {
+        ...postFileContents.data,
+      };
+    }),
+  );
+
+  return allPostData.sort((a, b) => {
     if (a.date < b.date) {
       return 1;
     }
@@ -30,63 +54,36 @@ export const getSortedPostsData = async () => {
   });
 };
 
-export const getAllPostPaths = async () => {
-  const postFileNames = await readdir(postsDirectory);
-
-  const postPaths = await Promise.all(
-    postFileNames.map(async (postFileName) => {
-      const postFilePath = path.join(postsDirectory, postFileName);
-      const postFileContent = await readFile(postFilePath, 'utf8');
-
-      const matterResult = matter(postFileContent);
-
-      return {
-        params: {
-          slug: matterResult.data.slug,
-        },
-      };
-    }),
-  );
-
-  return postPaths;
-};
-
 export const getPostData = async (slug: string) => {
-  const postFileNames = await readdir(postsDirectory);
+  const allPostFileNames = await readdir(postsDirectory);
 
-  const postsFileSlugMapping = await Promise.all(
-    postFileNames.map(async (postFileName) => {
+  const postFileSlugMappings = await Promise.all(
+    allPostFileNames.map(async (postFileName) => {
       const postFilePath = path.join(postsDirectory, postFileName);
-      const postFileContent = await readFile(postFilePath, 'utf8');
-
-      const matterResult = matter(postFileContent);
+      const postFileContents = await readAndParseFile(postFilePath);
 
       return {
         postFilePath,
-        slug: matterResult.data.slug,
+        slug: postFileContents.data.slug,
       };
     }),
   );
 
-  // @ts-ignore
-  const { postFilePath } = postsFileSlugMapping.find(
+  const { postFilePath } = postFileSlugMappings.find(
     (postFileSlugMapping) => postFileSlugMapping.slug === slug,
-  );
+  )!;
 
-  const postFileContent = await readFile(postFilePath, 'utf8');
+  const postFileContents = await readAndParseFile(postFilePath);
 
-  const matterResult = matter(postFileContent);
-
-  // Use remark to convert markdown into HTML string
   const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
+    .use(remarkHtml)
+    .process(postFileContents.content);
+
   const contentHtml = processedContent.toString();
 
-  // Combine the data with the id and contentHtml
   return {
     slug,
     contentHtml,
-    ...matterResult.data,
+    ...postFileContents.data,
   };
 };

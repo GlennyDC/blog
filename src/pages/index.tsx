@@ -1,9 +1,9 @@
 import { Layout, Date } from '@/components';
-import { getSortedPostsData } from '@/lib';
+import { getAllPostData } from '@/lib';
 import Link from 'next/link';
 
 export const getStaticProps = async () => {
-  const allPostsData = await getSortedPostsData();
+  const allPostsData = await getAllPostData();
   return {
     props: {
       allPostsData,
