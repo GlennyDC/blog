@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Container } from '../container';
-import { Footer } from './footer';
 import { Header } from './header';
 
 export const Layout: React.FC = ({ children }) => {
@@ -8,7 +7,6 @@ export const Layout: React.FC = ({ children }) => {
     <>
       <Header />
       <Container>{children}</Container>
-      <Footer />
     </>
   );
 };

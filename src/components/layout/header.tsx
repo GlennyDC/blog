@@ -1,49 +1,52 @@
 import styled, { css } from 'styled-components';
 import * as React from 'react';
+import { Container } from 'components/container';
 import { Avatar } from '../avatar';
+import { Socials } from './socials';
 
 const HeaderEl = styled.header`
-  height: 8rem;
-  ${({ theme: { colors, up } }) => css`
+  padding: 1rem 0;
+  ${({ theme: { colors } }) => css`
     background-color: ${colors.primary[500]};
     margin-bottom: 6rem;
+  `};
+`;
 
+const Credentials = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const StyledAvatar = styled(Avatar)`
+  width: 3rem;
+  margin-right: 1rem;
+
+  ${({ theme: { up } }) => css`
     ${up('sm')} {
-      height: 10rem;
-      margin-bottom: 8rem;
+      width: 4rem;
     }
     ${up('md')} {
-      height: 12rem;
-      margin-bottom: 10rem;
+      width: 5rem;
     }
   `};
 `;
 
-const StyledAvatar = styled(Avatar)`
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 4rem;
-  margin: auto;
-  width: 6rem;
-
-  ${({ theme: { up, colors } }) => css`
-    border: 0.5rem solid ${colors.secondary[300]};
-    ${up('sm')} {
-      top: 5rem;
-      width: 8rem;
-    }
-    ${up('md')} {
-      top: 6rem;
-      width: 10rem;
-    }
-  `};
+const StyledContainer = styled(Container)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const Header: React.FC = () => {
   return (
     <HeaderEl>
-      <StyledAvatar src="/img/me.jpg" alt="Glenny De Cock" />
+      <StyledContainer>
+        <Credentials>
+          <StyledAvatar src="/img/me.jpg" alt="Glenny De Cock" />
+          <span>Glenny De Cock</span>
+        </Credentials>
+        <Socials />
+      </StyledContainer>
     </HeaderEl>
   );
 };

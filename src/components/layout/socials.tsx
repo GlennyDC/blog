@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import * as React from 'react';
 
-import { GitHubIcon, LinkedInIcon } from '@/assets';
+import { GitHubIcon, LinkedInIcon } from './icons';
 
 const Container = styled.div`
   display: grid;

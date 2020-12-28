@@ -14,7 +14,7 @@ export const getStaticProps = async () => {
 const Home = ({ allPostsData }: any) => {
   return (
     <Layout>
-      <div style={{ height: '100vh' }}>
+      <div>
         {allPostsData.map(({ slug, date, title }: any) => (
           <li key={slug}>
             <Link href={`/posts/${slug}`} prefetch={false}>
